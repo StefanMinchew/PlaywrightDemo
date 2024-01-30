@@ -1,0 +1,21 @@
+{
+  "name": "pwdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pw:e2e": "playwright test --project=chromium",
+    "pw:e2e:firefox": "playwright test --project=firefox",
+    "pw:e2e:webkit": "playwright test --project=webkit",
+    "pw:e2e:ios": "playwright test --project=ios",
+    "pw:e2e:android": "playwright test --project=android"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.41.1",
+    "@types/node": "^20.11.10",
+    "expect-playwright": "^0.8.0"
+  }
+}
