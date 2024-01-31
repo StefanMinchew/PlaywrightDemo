@@ -1,4 +1,4 @@
-import { test } from "../playwright/fixtures/base.fixture";
+import { test, expect } from "../playwright/fixtures/base.fixture";
 import * as fs from "fs";
 import { e2eStorageState } from "./utils/login";
 
@@ -13,8 +13,9 @@ for (const { file } of loginData) {
       `GlobalSetup: Storage State time < than ${minutes} minutes, skiping Login`
     );
   } else {
-    test("Login", async ({ loginPage }) => {
+    test("Login", async ({ loginPage, inventoryPage }) => {
       await loginPage.loginGlobalSetup();
+      await expect(inventoryPage.firstItem).toBeVisible();
     });
   }
 }

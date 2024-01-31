@@ -7,11 +7,16 @@ export const STORAGE_STATE_E2E = path.join(
   __dirname,
   "playwright/auth/e2eStorageState.json"
 );
+
+const getEnvFile = () => {
+  const envFile: string = ".env";
+  return envFile;
+};
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require("dotenv").config({ path: ".env" });
 
 /* https://github.com/playwright-community/expect-playwright */
 expect.extend(matchers);

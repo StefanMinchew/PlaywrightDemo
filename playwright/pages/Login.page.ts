@@ -1,8 +1,12 @@
 import { Locator, Page } from "@playwright/test";
 import { Paths } from "../../config/paths";
 import { BasePage } from "./base/Base.page";
-import { users } from "../utils/crenedials";
 import { STORAGE_STATE_E2E } from "../../playwright.config";
+import { users } from "../../credentials/crenedials";
+
+const standardUser: string =
+  process.env.STANDARD_USER || users.standardUser.username;
+const password: string = process.env.PASSWORD! || users.standardUser.password;
 
 export class LoginPage extends BasePage {
   readonly _url = Paths.Home;
@@ -21,7 +25,7 @@ export class LoginPage extends BasePage {
   async loginGlobalSetup() {
     await this.page.goto("/");
     console.log("GlobalSetup: Performing UI login");
-    await this.login(users.standardUser.username, users.standardUser.password);
+    await this.login(standardUser, password);
     await this.page.context().storageState({ path: STORAGE_STATE_E2E });
   }
 
