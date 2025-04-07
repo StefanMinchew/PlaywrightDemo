@@ -1,18 +1,16 @@
-import { Locator, Page } from "@playwright/test";
-import { Paths } from "../../config/paths";
-import { BasePage } from "./base/Base.page";
+import { Locator, Page } from '@playwright/test';
+import { Paths } from '../enums/paths';
+import { BasePage } from './Base.page';
 
 export class CheckoutComplete extends BasePage {
-  readonly _url = Paths.CheckoutComplete;
-
   thankYou: Locator;
   backHome: Locator;
 
   constructor(page: Page) {
-    super(page);
+    super(page, Paths.CheckoutComplete);
 
-    this.thankYou = this.page.getByRole("heading", {
-      name: "Thank you for your order!",
+    this.thankYou = this.page.getByRole('heading', {
+      name: 'Thank you for your order!',
     });
     this.backHome = this.page.getByText(/Back Home/);
   }

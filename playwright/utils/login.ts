@@ -1,7 +1,5 @@
-import { test } from "@playwright/test";
+import { test } from '@playwright/test';
 
-export const e2eStorageState = "playwright/auth/e2eStorageState.json";
-
-export const resetStorageState = () => {
+export const resetStorageState = (): void => {
   test.use({ storageState: { cookies: [], origins: [] } });
 };
