@@ -1,24 +1,17 @@
-import { Locator, Page } from "@playwright/test";
-import { Paths } from "../../config/paths";
-import { BasePage } from "./base/Base.page";
-import { ItemComponent } from "../src/components/Item.component";
+import { Locator, Page } from '@playwright/test';
+import { Paths } from '../enums/paths';
+import { BasePage } from './Base.page';
 
 export class InventoryPage extends BasePage {
-  readonly _url = Paths.Inventory;
-
-  firstItem: Locator;
+  inventoryItem: Locator;
   addToCartButton: Locator;
   cartButton: Locator;
 
   constructor(page: Page) {
-    super(page);
+    super(page, Paths.Inventory);
 
-    this.firstItem = this.page.locator(".inventory_item").first();
+    this.inventoryItem = this.page.locator('.inventory_item');
     this.addToCartButton = this.page.getByText(/Add to cart/);
-    this.cartButton = this.page.locator("#shopping_cart_container a");
-  }
-
-  getInventoryItem(locator: Locator) {
-    return new ItemComponent(locator);
+    this.cartButton = this.page.locator('#shopping_cart_container a');
   }
 }
